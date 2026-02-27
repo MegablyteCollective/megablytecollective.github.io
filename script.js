@@ -25,7 +25,7 @@ const projects = [
     {
         id: 2,
         title: "OddJob",
-        image: "Media\\Games\\OddJob\\oddjobThumbnail.gif",
+        image: "Media\\Games\\OddJob\\oddJobThumbnail.gif",
         imageAlt: "OddJob",
         description: "Totally Normal Job Simulator",
         memberIds: [1, 2, 4],
@@ -36,7 +36,7 @@ const projects = [
     {
         id: 1,
         title: "Till Nightfall",
-        image: "Media\\Games\\TillNightfall\\tillnightfallThumbnail.png",
+        image: "Media\\Games\\TillNightfall\\tillNightfallThumbnail.png",
         imageAlt: "TillNightfall",
         description: "BLEND IN BLEND IN BLEND IN",
         memberIds: [2, 3, 4, 6],
