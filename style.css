@@ -61,12 +61,14 @@ body::before {
 }
 
 .member-avatar {
-    filter: grayscale(100%) contrast(1.2);
-    transition: filter 0.3s ease;
+    filter: brightness(0.78);
+    transform: scale(1);
+    transition: filter 0.25s ease, transform 0.25s ease;
 }
 
 .member-avatar:hover {
-    filter: grayscale(0%) contrast(1.1);
+    filter: brightness(1);
+    transform: scale(1.08);
 }
 
 .ascii-divider {

@@ -200,6 +200,8 @@ const members = [
 
 // Function to create a member card HTML
 function createMemberCard(member) {
+    const primaryMemberLink = member.links?.[0]?.url;
+
     // Generate links HTML dynamically
     const linksHtml = member.links.map((link, index) => {
         // Alternate colors for visual hierarchy: first link is brighter
@@ -212,11 +214,21 @@ function createMemberCard(member) {
         `;
     }).join('');
 
-    return `
-        <div class="flex flex-col items-center text-center group">
+    const profileImageHtml = primaryMemberLink
+        ? `
+            <a href="${primaryMemberLink}" target="_blank" rel="noopener noreferrer" title="${member.name}" aria-label="${member.name}" class="w-30 h-30 rounded-full border border-neutral-800 overflow-hidden mb-4 p-1 group-hover:border-neutral-600 transition-colors block">
+                <img src="${member.image}" alt="${member.imageAlt}" class="w-full h-full rounded-full member-avatar object-cover">
+            </a>
+        `
+        : `
             <div class="w-30 h-30 rounded-full border border-neutral-800 overflow-hidden mb-4 p-1 group-hover:border-neutral-600 transition-colors">
                 <img src="${member.image}" alt="${member.imageAlt}" class="w-full h-full rounded-full member-avatar object-cover">
             </div>
+        `;
+
+    return `
+        <div class="flex flex-col items-center text-center group">
+            ${profileImageHtml}
             <h3 class="text-sm font-bold mb-1 tracking-tight">${member.name}</h3>
             <p class="text-[10px] text-gray-600 mb-3 leading-tight">${member.bio}</p>
             <div class="flex flex-col items-center gap-1">
