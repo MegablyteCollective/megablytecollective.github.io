@@ -48,13 +48,26 @@ const projects = [
 
 // Function to create a project card HTML
 function createProjectCard(project) {
+    const primaryProjectLink = project.links?.[0]?.url;
+    const projectLinkCount = project.links.length;
+    const linkSizeClass = projectLinkCount <= 1
+        ? 'text-base'
+        : projectLinkCount === 2
+            ? 'text-sm'
+            : 'text-xs';
+    const iconSizeClass = projectLinkCount <= 1
+        ? 'w-4 h-4'
+        : projectLinkCount === 2
+            ? 'w-3.5 h-3.5'
+            : 'w-3 h-3';
+
     // Generate links HTML dynamically
     const linksHtml = project.links.map((link, index) => {
         // Alternate colors for visual hierarchy: first link is brighter
         const colorClass = index === 0 ? 'text-gray-300 hover:text-white' : 'text-gray-300 hover:text-gray-300';
         return `
-            <a href="${link.url}" target="_blank" rel="noopener noreferrer" class="${colorClass} flex items-center gap-1 transition-colors">
-                <i data-lucide="${link.icon}" class="w-3 h-3"></i>
+            <a href="${link.url}" target="_blank" rel="noopener noreferrer" class="${colorClass} ${linkSizeClass} flex items-center gap-1.5 transition-colors">
+                <i data-lucide="${link.icon}" class="${iconSizeClass}"></i>
                 ${link.title}
             </a>
         `;
@@ -75,24 +88,36 @@ function createProjectCard(project) {
         `;
     }).join('');
 
-    return `
-        <article class="project-card border-brutalist p-6 bg-[#080808] group">
+    const thumbnailHtml = primaryProjectLink
+        ? `
+            <a href="${primaryProjectLink}" target="_blank" rel="noopener noreferrer" class="aspect-video mb-6 overflow-hidden border border-neutral-800 block">
+                <img src="${project.image}" alt="${project.imageAlt}" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
+            </a>
+        `
+        : `
             <div class="aspect-video mb-6 overflow-hidden border border-neutral-800">
                 <img src="${project.image}" alt="${project.imageAlt}" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
             </div>
+        `;
+
+    return `
+        <article class="project-card border-brutalist p-6 bg-[#080808] group flex flex-col">
+            ${thumbnailHtml}
             <h2 class="text-lg mb-2 font-bold tracking-tight">${project.title}</h2>
             <p class="text-xs text-gray-500 mb-4 leading-relaxed h-16">
                 ${project.description}
             </p>
-            <div class="flex flex-wrap gap-x-4 gap-y-2 text-xs">
-                ${linksHtml}
-            </div>
             <div class="mt-4 pt-3 border-t border-neutral-900">
                 <p class="text-[10px] text-gray-600 tracking-[0.15em] mb-2">MEMBERS</p>
                 <div class="flex items-center gap-2">
                     ${projectMembersHtml}
                 </div>
             </div>
+            <footer class="mt-4 pt-3 border-t border-neutral-900">
+                <div class="flex flex-wrap gap-x-4 gap-y-2 text-xs">
+                    ${linksHtml}
+                </div>
+            </footer>
         </article>
     `;
 }
