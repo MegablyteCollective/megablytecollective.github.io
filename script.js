@@ -171,8 +171,9 @@ const members = [
         name: "shtoa",
         image: "Media\\Members\\shtoaPP.jpg",
         imageAlt: "shtoa",
-        bio: "Digital Artist.<br>Environmental Artist.",
+        bio: "Software Dev.<br> Creative Technologist.",
         links: [
+            { url: "https://shtoa.github.io", title: "WEBSITE", icon: "globe" },
             { url: "https://github.com/shtoa", title: "GITHUB", icon: "github" }
         ]
     },
