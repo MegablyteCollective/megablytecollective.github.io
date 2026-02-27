@@ -101,7 +101,7 @@ function createProjectCard(project) {
         `;
 
     return `
-        <article class="project-card border-brutalist p-6 bg-[#080808] group flex flex-col">
+        <article class="shrink-0 snap-start project-card border-brutalist p-6 bg-[#080808] group flex flex-col">
             ${thumbnailHtml}
             <h2 class="text-lg mb-2 font-bold tracking-tight">${project.title}</h2>
             <p class="text-xs text-gray-500 mb-4 leading-relaxed h-16">
