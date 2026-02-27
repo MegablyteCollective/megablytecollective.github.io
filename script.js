@@ -6,6 +6,7 @@ const projects = [
         image: "Media\\Games\\Panopticon\\panopticonThumbnail.gif",
         imageAlt: "Panopticon",
         description: "BLEND IN BLEND IN BLEND IN",
+        memberIds: [1, 2, 3, 4, 5],
         links: [
             { url: "https://eneme22.itch.io/panopticon", title: "PLAY", icon: "gamepad-2" },
         ]
@@ -16,6 +17,7 @@ const projects = [
         image: "Media\\Games\\Asphyxiatus\\asphyxiatusThumbnail.gif",
         imageAlt: "Asphyxiatus",
         description: "GET IN GET THE EGGS GET OUT",
+        memberIds: [1, 2, 3, 4, 5, 6],
         links: [
             { url: "https://eneme22.itch.io/asphyxiatus", title: "PLAY", icon: "gamepad-2" },
         ]
@@ -26,6 +28,7 @@ const projects = [
         image: "Media\\Games\\OddJob\\oddjobThumbnail.gif",
         imageAlt: "OddJob",
         description: "Totally Normal Job Simulator",
+        memberIds: [1, 2, 4],
         links: [
             { url: "https://orbxorb.itch.io/oddjob", title: "PLAY", icon: "gamepad-2" },
         ]
@@ -36,6 +39,7 @@ const projects = [
         image: "Media\\Games\\TillNightfall\\tillnightfallThumbnail.png",
         imageAlt: "TillNightfall",
         description: "BLEND IN BLEND IN BLEND IN",
+        memberIds: [2, 3, 4, 6],
         links: [
             { url: "https://eneme22.itch.io/tillnightfall", title: "PLAY", icon: "gamepad-2" },
         ]
@@ -56,6 +60,21 @@ function createProjectCard(project) {
         `;
     }).join('');
 
+    const projectMembers = (project.memberIds || [])
+        .map((memberId) => members.find((member) => member.id === memberId))
+        .filter(Boolean);
+
+    const projectMembersHtml = projectMembers.map((member) => {
+        const primaryLink = member.links?.[0]?.url;
+        if (!primaryLink) return '';
+
+        return `
+            <a href="${primaryLink}" target="_blank" rel="noopener noreferrer" title="${member.name}" aria-label="${member.name}" class="w-7 h-7 rounded-full border border-neutral-700 overflow-hidden hover:border-neutral-500 transition-colors">
+                <img src="${member.image}" alt="${member.imageAlt}" class="w-full h-full object-cover member-avatar">
+            </a>
+        `;
+    }).join('');
+
     return `
         <article class="project-card border-brutalist p-6 bg-[#080808] group">
             <div class="aspect-video mb-6 overflow-hidden border border-neutral-800">
@@ -67,6 +86,12 @@ function createProjectCard(project) {
             </p>
             <div class="flex flex-wrap gap-x-4 gap-y-2 text-xs">
                 ${linksHtml}
+            </div>
+            <div class="mt-4 pt-3 border-t border-neutral-900">
+                <p class="text-[10px] text-gray-600 tracking-[0.15em] mb-2">MEMBERS</p>
+                <div class="flex items-center gap-2">
+                    ${projectMembersHtml}
+                </div>
             </div>
         </article>
     `;
