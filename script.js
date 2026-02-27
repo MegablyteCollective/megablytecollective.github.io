@@ -184,7 +184,9 @@ const members = [
         imageAlt: "kunggings",
         bio: "Game Designer<br>Sound Engineering",
         links: [
+            { url: "https://www.georgebiffin.co.uk/", title: "Website", icon: "globe" },
             { url: "https://github.com/kunggings", title: "GITHUB", icon: "github" }
+
         ]
     },
     {
