@@ -36,7 +36,7 @@ const projects = [
     {
         id: 1,
         title: "Till Nightfall",
-        image: "Media\\Games\\TillNightfall\\tillNightfallThumbnail.png",
+        image: "Media\\Games\\TillNightFall\\tillNightfallThumbnail.png",
         imageAlt: "TillNightfall",
         description: "BLEND IN BLEND IN BLEND IN",
         memberIds: [2, 3, 4, 6],
