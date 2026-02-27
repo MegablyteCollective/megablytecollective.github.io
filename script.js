@@ -47,7 +47,7 @@ function createProjectCard(project) {
     // Generate links HTML dynamically
     const linksHtml = project.links.map((link, index) => {
         // Alternate colors for visual hierarchy: first link is brighter
-        const colorClass = index === 0 ? 'text-gray-300 hover:text-white' : 'text-gray-500 hover:text-gray-300';
+        const colorClass = index === 0 ? 'text-gray-300 hover:text-white' : 'text-gray-300 hover:text-gray-300';
         return `
             <a href="${link.url}" target="_blank" rel="noopener noreferrer" class="${colorClass} flex items-center gap-1 transition-colors">
                 <i data-lucide="${link.icon}" class="w-3 h-3"></i>
@@ -153,7 +153,7 @@ function createMemberCard(member) {
     // Generate links HTML dynamically
     const linksHtml = member.links.map((link, index) => {
         // Alternate colors for visual hierarchy: first link is brighter
-        const colorClass = index === 0 ? 'text-gray-300 hover:text-white' : 'text-gray-500 hover:text-gray-300';
+        const colorClass = index === 0 ? 'text-gray-300 hover:text-white' : 'text-gray-300 hover:text-gray-300';
         return `
             <a href="${link.url}" target="_blank" rel="noopener noreferrer" class="${colorClass} flex items-center gap-1 transition-colors text-[10px] underline decoration-neutral-800 underline-offset-4">
                 <i data-lucide="${link.icon}" class="w-3 h-3"></i>
@@ -164,7 +164,7 @@ function createMemberCard(member) {
 
     return `
         <div class="flex flex-col items-center text-center group">
-            <div class="w-24 h-24 rounded-full border border-neutral-800 overflow-hidden mb-4 p-1 group-hover:border-neutral-600 transition-colors">
+            <div class="w-30 h-30 rounded-full border border-neutral-800 overflow-hidden mb-4 p-1 group-hover:border-neutral-600 transition-colors">
                 <img src="${member.image}" alt="${member.imageAlt}" class="w-full h-full rounded-full member-avatar object-cover">
             </div>
             <h3 class="text-sm font-bold mb-1 tracking-tight">${member.name}</h3>
