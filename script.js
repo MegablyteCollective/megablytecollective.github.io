@@ -6,7 +6,7 @@ const projects = [
         image: "Media\\Games\\Panopticon\\panopticonThumbnail.gif",
         imageAlt: "Panopticon",
         description: "BLEND IN BLEND IN BLEND IN",
-        memberIds: [1, 2, 3, 4, 5],
+        memberIds: [5, 4, 3, 2, 1],
         links: [
             { url: "https://eneme22.itch.io/panopticon", title: "PLAY", icon: "gamepad-2" },
         ]
@@ -28,7 +28,7 @@ const projects = [
         image: "Media\\Games\\OddJob\\oddJobThumbnail.gif",
         imageAlt: "OddJob",
         description: "Totally Normal Job Simulator",
-        memberIds: [1, 2, 4],
+        memberIds: [4, 2, 1],
         links: [
             { url: "https://orbxorb.itch.io/oddjob", title: "PLAY", icon: "gamepad-2" },
         ]
@@ -150,7 +150,7 @@ const members = [
         name: "Eneme",
         image: "Media\\Members\\enemePP.png",
         imageAlt: "eneme",
-        bio: "Creative Programmer<br>Game Developer",
+        bio: "Creative Programmer<br>Game Dev",
         links: [
             { url: "https://emilioneme.com", title: "WEBSITE", icon: "globe" },
             { url: "https://github.com/emilioneme", title: "GITHUB", icon: "github" }
@@ -171,7 +171,7 @@ const members = [
         name: "Shtoa",
         image: "Media\\Members\\shtoaPP.jpg",
         imageAlt: "shtoa",
-        bio: "Software Dev.<br> Creative Technologist",
+        bio: "Software Dev<br> Creative Technologist",
         links: [
             { url: "https://shtoa.github.io", title: "WEBSITE", icon: "globe" },
             { url: "https://github.com/shtoa", title: "GITHUB", icon: "github" }
