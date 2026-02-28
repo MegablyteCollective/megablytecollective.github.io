@@ -137,20 +137,20 @@ function renderProjects() {
 const members = [
     {
         id: 1,
-        name: "2Aphids",
+        name: "2aphids",
         image: "Media\\Members\\2aphidsPP.jpg",
         imageAlt: "2Aphids",
-        bio: "3D Artist<br>Godot Lover",
+        bio: "3D Artist<br>FOSS Enthusiast <br>Creative Programmer",
         links: [
             { url: "https://github.com/2aphids", title: "GITHUB", icon: "github" }
         ]
     },
     {
         id: 2,
-        name: "eneme",
+        name: "Eneme",
         image: "Media\\Members\\enemePP.png",
         imageAlt: "eneme",
-        bio: "Game Programmer<br>Creative Coder<br>Unity Lover",
+        bio: "Creative Programmer<br>Game Developer",
         links: [
             { url: "https://emilioneme.com", title: "WEBSITE", icon: "globe" },
             { url: "https://github.com/emilioneme", title: "GITHUB", icon: "github" }
@@ -158,7 +158,7 @@ const members = [
     },
     {
         id: 3,
-        name: "paincakes",
+        name: "Paincakes",
         image: "Media\\Members\\paincakesPP.jpg",
         imageAlt: "paincakes",
         bio: "Software Dev<br>AI Programming",
@@ -168,10 +168,10 @@ const members = [
     },
     {
         id: 4,
-        name: "shtoa",
+        name: "Shtoa",
         image: "Media\\Members\\shtoaPP.jpg",
         imageAlt: "shtoa",
-        bio: "Software Dev.<br> Creative Technologist.",
+        bio: "Software Dev.<br> Creative Technologist",
         links: [
             { url: "https://shtoa.github.io", title: "WEBSITE", icon: "globe" },
             { url: "https://github.com/shtoa", title: "GITHUB", icon: "github" }
@@ -179,12 +179,14 @@ const members = [
     },
     {
         id: 5,
-        name: "kunggings",
+        name: "Kunggings",
         image: "Media\\Members\\kunggingsPP.jpg",
         imageAlt: "kunggings",
-        bio: "Game Designer<br>Sound Engineering",
+        bio: "Sound Engineering<br>Creative Programmer",
         links: [
+            { url: "https://www.georgebiffin.co.uk/", title: "WEBSITE", icon: "globe" },
             { url: "https://github.com/kunggings", title: "GITHUB", icon: "github" }
+
         ]
     },
     {
