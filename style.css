@@ -44,9 +44,13 @@ body::before {
 }
 
 .carousel-container {
-    scrollbar-width: thin;
-    scrollbar-color: #333 #0a0a0a;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
     -webkit-overflow-scrolling: touch;
+}
+
+.carousel-container::-webkit-scrollbar {
+    display: none;
 }
 
 .project-card {
@@ -86,6 +90,10 @@ body::before {
 @media (max-width: 768px) {
     .project-card {
         width: 85vw;
+    }
+
+    .project-card-selected {
+        transform: scale(0.93);
     }
 }
 
