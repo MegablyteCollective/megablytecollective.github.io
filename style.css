@@ -96,6 +96,7 @@ a:hover {
     scale: 0.7;
 }
 
+
 @keyframes spin {
     from {
         transform: rotate(0deg);

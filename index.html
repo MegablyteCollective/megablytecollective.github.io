@@ -13,38 +13,20 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
-    const eyes = document.getElementById("eyes");
-    const maxMove = 8; // maximum movement in pixels
+const parallax = document.querySelector(".parallax");
 
-document.addEventListener("mousemove", (e) => {
-    const rect = eyes.parentElement.getBoundingClientRect();
-    
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
+window.addEventListener("scroll", () => {
+    if (!parallax) return;
 
-    let deltaX = e.clientX - centerX;
-    let deltaY = e.clientY - centerY;
-
-    // Normalize direction
-    const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-    
-    if (distance > 0) {
-        deltaX = (deltaX / distance) * maxMove;
-        deltaY = (deltaY / distance) * maxMove;
-    }
-
-    eyes.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
-    
-});
+    const scrollTop = window.pageYOffset;
+    parallax.style.transform = `translateY(${scrollTop * 0.3}px)`;
 });
 </script>
 <body class="min-h-screen flex flex-col justify-between max-w-7xl mx-auto px-6">
-
     <!-- PROJECTS SECTION -->
     <section class="flex-grow pt-10 pb-16 px-6 md:px-12">
         
-            <div class="mb-3 text-center">
+            <div class="mb-3 text-center" data-speed="0.3">
                 <div class="w-52 h-52 md:w-76 md:h-76 mx-auto mb-10 rounded-full flex items-center justify-center overflow-hidden">
                     <!-- layered logo -->
                     <!-- <img class="spin absolute w-40 h-40" src="Media/Brand/AnimatedLogo/bottom.png" alt="Megablyte logo"> -->

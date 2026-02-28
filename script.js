@@ -19,7 +19,7 @@ const projects = [
         description: "GET IN GET THE EGGS GET OUT",
         memberIds: [1, 2, 3, 4, 5, 6],
         links: [
-            { url: "https://eneme22.itch.io/asphyxiatus", title: "PLAY", icon: "gamepad-2" },
+            { url: "https://orbxorb.itch.io/asphyxiatus", title: "PLAY", icon: "gamepad-2" },
         ]
     },
     {
