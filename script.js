@@ -278,6 +278,52 @@ function updateCarouselControls() {
     }
 }
 
+function updateSelectedProjectCard() {
+    if (!carousel) return;
+
+    const cards = Array.from(carousel.querySelectorAll('.project-card'));
+    if (!cards.length) return;
+
+    const carouselRect = carousel.getBoundingClientRect();
+    const carouselCenter = carouselRect.left + (carouselRect.width / 2);
+
+    const fullyVisibleCards = cards.filter((card) => {
+        const cardRect = card.getBoundingClientRect();
+        return cardRect.left >= carouselRect.left && cardRect.right <= carouselRect.right;
+    });
+
+    const candidateCards = fullyVisibleCards.length ? fullyVisibleCards : cards;
+
+    let selectedCard = candidateCards[0];
+    let shortestDistance = Number.POSITIVE_INFINITY;
+
+    candidateCards.forEach((card) => {
+        const cardRect = card.getBoundingClientRect();
+        const cardCenter = cardRect.left + (cardRect.width / 2);
+        const distance = Math.abs(cardCenter - carouselCenter);
+
+        if (distance < shortestDistance) {
+            shortestDistance = distance;
+            selectedCard = card;
+        }
+    });
+
+    cards.forEach((card) => {
+        card.classList.toggle('project-card-selected', card === selectedCard);
+    });
+}
+
+let selectedCardRaf = null;
+
+function requestSelectedProjectCardUpdate() {
+    if (selectedCardRaf !== null) return;
+
+    selectedCardRaf = requestAnimationFrame(() => {
+        selectedCardRaf = null;
+        updateSelectedProjectCard();
+    });
+}
+
 let isDown = false;
 let startX;
 let scrollLeft;
@@ -305,27 +351,11 @@ if (carousel) {
         if (!isDown) return;
         e.preventDefault();
         const x = e.pageX - carousel.offsetLeft;
-        const walk = (x - startX) * 2;
+        const walk = x - startX;
         carousel.scrollLeft = scrollLeft - walk;
     });
 
-    // Touch Support
-    carousel.addEventListener('touchstart', (e) => {
-        isDown = true;
-        startX = e.touches[0].pageX - carousel.offsetLeft;
-        scrollLeft = carousel.scrollLeft;
-    });
-
-    carousel.addEventListener('touchend', () => {
-        isDown = false;
-    });
-
-    carousel.addEventListener('touchmove', (e) => {
-        if (!isDown) return;
-        const x = e.touches[0].pageX - carousel.offsetLeft;
-        const walk = (x - startX) * 2;
-        carousel.scrollLeft = scrollLeft - walk;
-    });
+    carousel.addEventListener('scroll', requestSelectedProjectCardUpdate);
 }
 
 // Button Controls
@@ -343,3 +373,7 @@ if (rightBtn && carousel) {
 
 window.addEventListener('resize', updateCarouselControls);
 window.addEventListener('load', updateCarouselControls);
+window.addEventListener('resize', requestSelectedProjectCardUpdate);
+window.addEventListener('load', requestSelectedProjectCardUpdate);
+
+requestSelectedProjectCardUpdate();
