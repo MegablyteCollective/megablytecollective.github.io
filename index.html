@@ -13,38 +13,20 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
-    const eyes = document.getElementById("eyes");
-    const maxMove = 8; // maximum movement in pixels
+const parallax = document.querySelector(".parallax");
 
-document.addEventListener("mousemove", (e) => {
-    const rect = eyes.parentElement.getBoundingClientRect();
-    
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
+window.addEventListener("scroll", () => {
+    if (!parallax) return;
 
-    let deltaX = e.clientX - centerX;
-    let deltaY = e.clientY - centerY;
-
-    // Normalize direction
-    const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-    
-    if (distance > 0) {
-        deltaX = (deltaX / distance) * maxMove;
-        deltaY = (deltaY / distance) * maxMove;
-    }
-
-    eyes.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
-    
-});
+    const scrollTop = window.pageYOffset;
+    parallax.style.transform = `translateY(${scrollTop * 0.3}px)`;
 });
 </script>
 <body class="min-h-screen flex flex-col justify-between max-w-7xl mx-auto px-6">
-
     <!-- PROJECTS SECTION -->
     <section class="flex-grow pt-10 pb-16 px-6 md:px-12">
         
-            <div class="mb-3 text-center">
+            <div class="mb-3 text-center" data-speed="0.3">
                 <div class="w-52 h-52 md:w-76 md:h-76 mx-auto mb-10 rounded-full flex items-center justify-center overflow-hidden">
                     <!-- layered logo -->
                     <!-- <img class="spin absolute w-40 h-40" src="Media/Brand/AnimatedLogo/bottom.png" alt="Megablyte logo"> -->
@@ -149,20 +131,20 @@ document.addEventListener("mousemove", (e) => {
         <!-- Carousel -->
         <div class="relative">
             <!-- Left Fade -->
-            <div class="pointer-events-none absolute left-0 top-0 h-full w-10 bg-gradient-to-r 
-            from-[#050505] 
-            via-[#050505]/80 
-            via-[#050505]/40 
+            <div class="pointer-events-none absolute -left-4 top-0 h-full w-10 bg-gradient-to-r 
+            from-[#050505]/60 sm:from-[#050505] 
+            via-[#050505]/35 sm:via-[#050505]/80 
+            via-[#050505]/15 sm:via-[#050505]/40 
             to-transparent 
             z-10">
             </div>
 
             <!-- Right Fade -->
-            <div class="pointer-events-none absolute right-0 top-0 h-full w-10 
+            <div class="pointer-events-none absolute -right-4 top-0 h-full w-10 
             bg-gradient-to-l 
-            from-[#050505] 
-            via-[#050505]/80 
-            via-[#050505]/100 
+            from-[#050505]/60 sm:from-[#050505] 
+            via-[#050505]/35 sm:via-[#050505]/80 
+            via-[#050505]/20 sm:via-[#050505]/100 
             to-transparent 
             z-10">
             </div>
@@ -191,31 +173,35 @@ document.addEventListener("mousemove", (e) => {
         <div class="max-w-6xl mx-auto">
 
             <div class="mb-12 pb-8 text-center">
+                <a href="mailto:contact@megablyte.com" class="flex text-gray-300 hover:text-white transition-colors items-center justify-center gap-2 w-fit mx-auto mb-4 pb-1">
+                        <i data-lucide="mail" class="w-4 h-4"></i>
+                        CONTACT@MEGABLYTE.COM
+                </a>
                 <p class="text-xs tracking-[0.2em] text-gray-600 mb-4">MEGABLYTE LINKS</p>
-                <div class="flex flex-col sm:flex-row items-center sm:items-center justify-center gap-2 text-xs sm:text-sm w-full">
+                <div class="flex flex-row flex-wrap items-center justify-center gap-4 sm:gap-2 text-xs sm:text-sm w-full">
                     <a href="https://github.com/MegablyteCollective" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-white transition-colors flex items-center gap-2">
-                        <i data-lucide="github" class="w-4 h-4"></i>
-                        GITHUB
+                        <i data-lucide="github" class="w-6 h-6 sm:w-4 sm:h-4"></i>
+                        <span class="hidden sm:inline">GITHUB</span>
                     </a>
                     <a href="https://x.com/megablyte" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-white transition-colors flex items-center gap-2">
-                        <i data-lucide="twitter" class="w-4 h-4"></i>
-                        TWITTER
+                        <i data-lucide="twitter" class="w-6 h-6 sm:w-4 sm:h-4"></i>
+                        <span class="hidden sm:inline">TWITTER</span>
                     </a>
                     <a href="https://bsky.app/profile/megablyte.bsky.social" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-white transition-colors flex items-center gap-2">
-                        <i data-lucide="cloud" class="w-4 h-4"></i>
-                        BLUESKY
+                        <i data-lucide="cloud" class="w-6 h-6 sm:w-4 sm:h-4"></i>
+                        <span class="hidden sm:inline">BLUESKY</span>
                     </a>
                     <a href="https://www.youtube.com/@MegablyteCollective" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-white transition-colors flex items-center gap-2">
-                        <i data-lucide="youtube" class="w-4 h-4"></i>
-                        YOUTUBE
+                        <i data-lucide="youtube" class="w-6 h-6 sm:w-4 sm:h-4"></i>
+                        <span class="hidden sm:inline">YOUTUBE</span>
                     </a>
                     <a href="https://megablyte.itch.io/" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-white transition-colors flex items-center gap-2">
-                        <i data-lucide="joystick" class="w-4 h-4"></i>
-                        ITCH.IO
+                        <i data-lucide="joystick" class="w-6 h-6 sm:w-4 sm:h-4"></i>
+                        <span class="hidden sm:inline">ITCH.IO</span>
                     </a>
                     <a href="https://www.instagram.com/megablyte_/" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-white transition-colors flex items-center gap-2">
-                        <i data-lucide="instagram" class="w-4 h-4"></i>
-                        INSTAGRAM
+                        <i data-lucide="instagram" class="w-6 h-6 sm:w-4 sm:h-4"></i>
+                        <span class="hidden sm:inline">INSTAGRAM</span>
                     </a>
                 </div>
             </div>
