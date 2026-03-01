@@ -8,6 +8,13 @@ body {
     overflow-x: hidden;
 }
 
+/* body {                                               //Tiled Face Background
+  background-image: url("Media/Brand/faceBlack.png");
+  background-repeat: repeat;
+  overflow-x: hidden;
+   background-size: 500px;
+} */
+
 /* Scanline effect */
 body::before {
     content: "";
